@@ -59,6 +59,17 @@ def query(sql: str) -> list[dict]:
 # ── App ────────────────────────────────────────────────────────────────────────
 app = FastAPI(title="GEI PISA API")
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI(title="GEI PISA API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["GET"],
+    allow_headers=["*"],
+)
+
 
 # ── Chart A: Number of submissions ────────────────────────────────────────────
 # Expected: { "count": 134000 }
